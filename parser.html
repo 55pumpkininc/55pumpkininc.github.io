@@ -75,6 +75,7 @@
 					<h1><a href="#">55 Pumpkin<span>.</span></a></h1>
 					<nav role="navigation">
 						<ul>
+							<li class="cta"><a href="index.html">Adverse Media</a></li>
 							<li class="cta"><a href="google.html">Google Search</a></li>
 							<li class="cta"><a href="parser.html">Article Parser</a></li>
 						</ul>
@@ -138,7 +139,7 @@
          mainApp.factory('testService', ['$http', function($http) {
             var factory = {};
             factory.r = function (a) {
-               return $http.get('http://localhost:5000/newspaper?url='+a)
+               return $http.get('http://169.59.66.242:5000/newspaper?url='+a)
                   .success(function(data) {
                return data;
                });

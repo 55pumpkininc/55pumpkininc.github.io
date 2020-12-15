@@ -253,7 +253,7 @@
          mainApp.factory('testService', ['$http', function($http) {
             var factory = {};
             factory.r = function (a) {
-               return $http.get('http://localhost:5000/pumpkinservice?entity='+a)
+               return $http.get('http://169.59.66.242:5000/pumpkinservice?entity='+a)
                   .success(function(data) {
                return data;
                });
