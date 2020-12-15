@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<style>
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 900px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  border: 5px solid #DAB319;
+  padding: 0px 0;
+  position: absolute;
+  z-index: 1;
+ /*bottom: 125%;*/
+  left: 10%;
+  margin-left: -700px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+</style>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>55 Pumpkin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+
+
+	<script>
+		function openStatus(evt, status) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(status).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+
+
+	<script language="JavaScript" type="text/javascript" >
+		function popup(batchID) {
+			window.open("createTicket.html", "null", "height=500, width=500, status=no, member=no, location=no, resizeable=no, titlebar=no, scrollbars=yes, top=100, left= 400");
+		}
+	</script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body ng-app="mainApp">
+<div ng-controller="CalcController">
+	<div id="fh5co-page">
+		<header id="fh5co-header" role="banner">
+			<div class="container">
+				<div class="header-inner">
+					<h1><a href="#">55 Pumpkin</a><span style="color: #DAB319" >.</span></h1>
+					<nav role="navigation">
+						<ul>
+							<li class="cta"><a href="index.html">Adverse Media</a></li>
+							<li class="cta"><a href="google.html">Google Search</a></li>
+							<li class="cta"><a href="parser.html">Article Parser</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+	</div>
+
+
+	<aside id="fh5co-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+				<li style="background-color: #585858">
+					<div class="overlay-gradient">
+						<div class="container">
+							<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+								<div class="slider-text-inner">
+									<h2>Adverse Media Service</h2>
+									<p><a href="#fh5co-testimonial" class="btn btn-primary btn-lg">Perform Check</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</aside>
+
+
+	<div id="fh5co-testimonial" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>Adverse Media Service</h2>
+					<div class="form-group">
+						<input class="form-control" ng-model="entity" placeholder="Entity Name" type="text"></br>
+						<!--<input href="#links" ng-click="searchEntity()" value="SUBMIT REQUEST" class="btn btn-primary" type="submit">-->
+						<p><a href="#link_id"  ng-click="searchEntity()" class="btn btn-primary btn-lg">Submit</a></p>
+					</div>
+					
+					<p>Articles found: {{result.length}}</p>
+
+			
+				</div>
+			</div>
+		</div>
+	</div>		
+
+				<table width="70%" align="center" id="link_id">
+				<tr>
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ><b>S No.</b></button>
+					</th>
+					
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('url')"><b>URL</b></button>
+						<span class="sortorder" ng-show="propertyName === 'url'" ng-class="{reverse: reverse}"></span>
+					</th>
+					
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('title')"><b>Title</b></button>
+						<span class="sortorder" ng-show="propertyName === 'title'" ng-class="{reverse: reverse}"></span>
+					</th>
+
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('words_count')"><b>Words</b></button>
+						<span class="sortorder" ng-show="propertyName === 'words_count'" ng-class="{reverse: reverse}"></span>
+					</th>
+
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('status')"><b>Status</b></button>
+						<span class="sortorder" ng-show="propertyName === 'status'" ng-class="{reverse: reverse}"></span>
+					</th>
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('error')"><b>Error</b></button>
+						<span class="sortorder" ng-show="propertyName === 'error'" ng-class="{reverse: reverse}"></span>
+					</th>
+				</tr>
+				
+				<tr dir-paginate="item in result | itemsPerPage: 50 | orderBy:propertyName:reverse" pagination-id="success">>
+				
+					<td class="table-control-center">{{ $index + 1 }}</td>
+					<td class="table-control-center"><a href="{{item.url}}" target="_blank">View Article</a>
+					<td class="table-control-left">{{item.title}}</td>
+					<td class="table-control-left">{{item.words_count}}</td>
+					<td class="table-control-center">{{item.status}}</td>
+					<td class="table-control-center">{{item.error}}</td>
+					<td class="table-control-center">
+						<div  class="popup" ng-click="popup(item.doc_id)">View Content
+							<span class="popuptext" id="myPopup{{item.doc_id}}" ng-bind-html="item.content | html"></span>
+						</div>
+					</td>
+				</tr>
+
+					<dir-pagination-controls 
+						pagination-id="success"
+						direction-links="true"
+						boundary-links="true">
+					</dir-pagination-controls>	
+				</table>
+				<p></p>
+				<p></p>
+
+</div>
+
+<script>
+         var mainApp = angular.module("mainApp", ['angularUtils.directives.dirPagination']);
+         mainApp.filter('html', ['$sce', function ($sce) { 
+             return function (text) {
+                 return $sce.trustAsHtml(text);
+             };    
+         }]);
+
+         mainApp.factory('testService', ['$http', function($http) {
+            var factory = {};
+            factory.r = function (a) {
+               return $http.get('http://localhost:5000/pumpkinservice?entity='+a)
+                  .success(function(data) {
+               return data;
+               });
+            }
+            return factory;
+         }]);
+
+         mainApp.service('GetData', function(testService) {
+            this.output = function (a) {
+               return testService.r(a);
+            }
+         });
+
+         mainApp.controller('CalcController', function($scope, GetData ) {
+
+         	$scope.sortBy = function(propertyName) {
+		        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+		        $scope.propertyName = propertyName;
+		    };
+         	
+
+             $scope.searchEntity = function() {
+               GetData.output($scope.entity).success(function(data){
+                  $scope.result = data;
+               });
+            };
+
+            $scope.popup = function(id) {
+            	var txt = "myPopup" + id;
+            	var popupElement = document.getElementById(txt);
+	  			popupElement.classList.toggle("show");
+            }
+
+      	});
+
+      </script>
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Flexslider -->
+<script src="js/jquery.flexslider-min.js"></script>
+
+<script src="js/main.js"></script>
+<!-- Controllers -->
+
+<script src="js/dirPagination.js"></script>
+<script src="js/zingchart-angularjs.js"></script>
+<script src="js/zingchart.min.js"></script>
+
+</body>
+</html>
+

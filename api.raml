@@ -1,0 +1,59 @@
+#%RAML 0.8
+baseUri: http://navTicketAPI.ca
+title: Create/Update Ticket API
+schemas:
+  - ticketRequestSchema : |
+      {
+        "type": "object",
+        "$schema": "http://json-schema.org/draft-03/schema",
+        "id": "http://jsonschema.net",
+        "required": true,
+        "properties": {
+          "batchID": {
+            "type": "string",
+            "required": true
+          },
+          "user": {
+            "type": "string",
+            "required": true
+          },
+          "comment": {
+            "type": "string",
+            "required": true
+          },
+          "status": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+  - response : |
+      {
+        "type": "object",
+        "$schema": "http://json-schema.org/draft-03/schema",
+        "id": "http://jsonschema.net",
+        "required": true,
+        "properties": {
+          "result": {
+            "type": "string",
+            "required": true
+          },
+          "message": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+  
+/ticketRequest:
+  displayName: Create/Update the Ticket Info
+  post:
+    description: This is to create a new ticket or update an existing ticket
+    body: 
+      application/json:
+        schema: ticketRequestSchema
+    responses:
+      200:
+        body:
+          application/json:
+            schema: response

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>55 Pumpkin - Angular </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+
+	<script>
+		function openStatus(evt, status) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+			    for (i = 0; i < tabcontent.length; i++) {
+			        tabcontent[i].style.display = "none";
+			    }
+		    tablinks = document.getElementsByClassName("tablinks");
+			    for (i = 0; i < tablinks.length; i++) {
+			        tablinks[i].className = tablinks[i].className.replace(" active", "");
+			    }
+		    document.getElementById(status).style.display = "block";
+		    evt.currentTarget.className += " active";
+		}
+	</script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body ng-app="mainApp">
+	<div ng-controller="CalcController">	
+		
+		<div id="fh5co-page">
+		<header id="fh5co-header" role="banner">
+			<div class="container">
+				<div class="header-inner">
+					<h1><a href="#">55 Pumpkin<span>.</span></a></h1>
+					<nav role="navigation">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li class="cta"><a href="parser.html">Article Parser</a></li>
+							<li class="cta"><a href="google.html">Google Search</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		</div>
+			
+
+		<aside id="fh5co-hero" class="js-fullheight">
+			<div class="flexslider js-fullheight">
+				<ul class="slides">
+			   	<li style="background-image: url(images/slide_1.jpg);">
+			   		<div class="overlay-gradient"></div>
+			   		<div class="container">
+			   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					<h2>Analytics Portal</h2>
+			   					<p><a href="#dashboard" class="btn btn-primary btn-lg">Dashboard</a></p>
+			   				</div>
+			   			</div>
+			   		</div>
+			   	</li>   	
+			  	</ul>
+		  	</div>
+		</aside>
+
+		<div id="bar-chart" align="center">
+		<br>	
+			<div id='myChart'></div>
+		</div>
+
+		<div id="dashboard" class="animate-box">
+			<div align="center">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">		
+					<div class="form-group">
+						<input class="form-control" ng-model="inputDate" placeholder="yyyy-MM-dd" min="2013-01-01" max="2020-12-31"/></br>
+						<input ng-click="statusFunction()" value="SUBMIT REQUEST" class="btn btn-primary" type="submit"><br>
+						<p><strong>Note:</strong> To know the current status - Click on the respective tabs. </p>
+					<div>
+				</div>
+			</div>
+			
+			<div class="container">
+						<div class="col-md-4 text-center item-block">	
+							<blockquote>
+								<p><span class="fh5co-author"><cite>DAILY</cite></span></p>
+							
+								<canvas id="doughnut" class="chart chart-doughnut" chart-data="status_daily" chart-labels="labels">
+								</canvas>
+							
+								<div class="fh5co-author">
+									<div  class="fh5co-author">SUCCESS : {{status_daily[0]}}</a></div>
+									<div class="fh5co-author">IN PROGRESS : {{status_daily[1]}}</div>
+								</div>
+							</blockquote>
+						</div>
+
+						<div class="col-md-4 text-center item-block">	
+							<blockquote>
+								<p><span class="fh5co-author"><cite>MONTHLY</cite></span></p>
+								
+								<canvas id="doughnut1" class="chart chart-doughnut" chart-data="status_overall" chart-labels="labels">
+								</canvas>
+								
+								<div class="fh5co-author">
+									<div  class="fh5co-author">SUCCESS : {{status_overall[0]}}</a></div>
+									<div class="fh5co-author">IN PROGRESS : {{status_overall[1]}}</div>
+								</div>
+							</blockquote>
+						</div>
+
+
+						<br>
+				</div>
+
+				<div id="menu" align="center">
+						<br>
+						<ul class="nav nav-tabs">
+						    <li><a href="#menu" onclick="openStatus(event, 'fh5co-testimonial')">Home</a></li>
+						    <li><a href="#menu" onclick="openStatus(event, 'Completed')">Completed</a></li>
+						    <li><a href="#menu" onclick="openStatus(event, 'InProgress')">In Progress</a></li>
+						</ul>
+						<br>
+				</div>	
+
+	<div id="Completed" class="tabcontent" >
+		<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+			<h3>Success - {{daily_S.length}}</h3>
+			<p>Details of Completed Records</p>
+			<div>
+				<input class="form-control" ng-model="searchSuccess" placeholder="Search" type="text"/></br>
+				<table align="center">
+				<tr>
+					<th>
+					<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('file_name')"><b>FILE NAME</b></button>
+						<span class="sortorder" ng-show="propertyName === 'file_name'" ng-class="{reverse: reverse}"></span>
+					</th>
+					
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('email_received_ts')"><b>EMAIL RECEIVED TS</b></button>
+						<span class="sortorder" ng-show="propertyName === 'email_received_ts'" ng-class="{reverse: reverse}"></span>
+					</th>
+				</tr>
+				
+				<tr dir-paginate="item in daily_S | itemsPerPage: 40 | filter: searchSuccess | orderBy:propertyName:reverse" pagination-id="success">
+				
+					<td class="table-control-left">{{item.file_name}}</td>
+					<td class="table-control-center">{{item.email_received_ts}}</td>
+				</tr>
+
+				<dir-pagination-controls 
+					pagination-id="success"
+					max-size ="5"
+					direction-links="true"
+					boundary-links="true">
+				</dir-pagination-controls>	
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div id="InProgress" class="tabcontent" >
+		<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+			<h3>In Progress - {{daily_I.length}}</h3>
+			<p>Details of In Progress Records</p>
+			<div>
+				<input class="form-control" ng-model="searchSuccess" placeholder="Search" type="text"/></br>
+				<table align="center">
+				<tr>
+					<th>
+					<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('file_name')"><b>FILE NAME</b></button>
+						<span class="sortorder" ng-show="propertyName === 'file_name'" ng-class="{reverse: reverse}"></span>
+					</th>
+					
+					<th>
+						<button align="center" class="btn btn-primary btn-lg" ng-click="sortBy('email_received_ts')"><b>EMAIL RECEIVED TS</b></button>
+						<span class="sortorder" ng-show="propertyName === 'email_received_ts'" ng-class="{reverse: reverse}"></span>
+					</th>
+				</tr>
+				
+				<tr dir-paginate="item in daily_I | itemsPerPage: 40 | filter: searchSuccess | orderBy:propertyName:reverse" pagination-id="success">
+				
+					<td class="table-control-left">{{item.file_name}}</td>
+					<td class="table-control-center">{{item.email_received_ts}}</td>
+				</tr>
+
+				<dir-pagination-controls 
+					pagination-id="success"
+					max-size ="5"
+					direction-links="true"
+					boundary-links="true">
+				</dir-pagination-controls>	
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+<!--	
+	<div class="col-md-4 text-center item-block">	
+		<div>
+			<p ng-repeat= "x in batchIDList track by $index"> {{$index + 1}} - {{batchIDList[$index]}}</p>
+		</div>
+	</div>
+-->
+
+				</div>	
+			</div>
+
+					
+		</div>
+	</div>
+
+</div>
+
+<script>
+         var mainApp = angular.module("mainApp", ['chart.js','angularUtils.directives.dirPagination']);
+
+         mainApp.factory('testService', ['$http', function($http) {
+            var factory = {};
+            factory.r = function () {
+               return $http.get('http://localhost:5000/testservice')
+                  .success(function(data) {
+               return data;
+               });
+            }
+            return factory;
+         }]);
+
+         mainApp.service('GetData', function(testService) {
+            this.output = function () {
+               return testService.r();
+            }
+         });
+
+         mainApp.controller('CalcController', function($scope, GetData ) {
+
+         	$scope.requestDate = new Date();
+		    $scope.createDate_T = new Date();
+		    $scope.status_daily = [0,0];
+		    $scope.status_overall = [0,0];
+		   
+
+		    $scope.labels = ["SUCCESS", "IN_PROGRESS"];
+		    $scope.daily_data = [0,0];
+
+		    $scope.batchStatus = ''; 
+		    $scope.batchlookupID = ''; 
+		    $scope.claim = ''; 
+		    $scope.batchID = '';
+		    $scope.articleUrl = '';
+		    $scope.entity = '';
+
+		    $scope.propertyName = 'CLAIM_NUMBER';
+
+
+		        /* Data filtering for Status - START                */
+
+		    function isSuccess (value) {
+		      return value.status=='COMPLETED'
+		    }
+
+		    function isInprogress (value) {
+		      return value.status=='IN_PROGRESS'
+		    }
+
+		    function isDaily (value) {
+		      return value.email_received_ts.includes('2020-05-12')
+		    }
+
+		    function filterByDate(value) {
+		      return value.email_received_ts.includes($scope.inputDate)
+		    }
+
+             $scope.getDetails = function() {
+               GetData.output().success(function(data){
+                  $scope.details = data;
+               });
+            }
+
+
+            $scope.statusFunction = function() {
+      			GetData.output().success(function(data) {
+		          $scope.status_daily[0] = data.filter(isSuccess).filter(isDaily).length;
+		          $scope.status_daily[1] = data.filter(isInprogress).filter(isDaily).length;
+
+		          $scope.status_overall[0] = data.filter(isSuccess).length;
+		          $scope.status_overall[1] = data.filter(isInprogress).length;
+
+		          $scope.daily_S = data.filter(isSuccess).filter(filterByDate);
+		          $scope.daily_I = data.filter(isInprogress).filter(filterByDate);
+		         });
+      		}
+      	});
+
+      </script>
+
+	
+
+
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+	<script src="js/dirPagination.js"></script>
+	<script src="js/zingchart-angularjs.js"></script>
+	<script src="js/zingchart.min.js"></script>
+	<script src="js/angular-chart.min.js"></script>
+	<script src="js/Chart.min.js"></script>
+	<script src="js/angular-chart.min.js"></script>
+	<script src="js/Chart.js"></script>
+
+	</body>
+</html>
+
