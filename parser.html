@@ -139,7 +139,7 @@
          mainApp.factory('testService', ['$http', function($http) {
             var factory = {};
             factory.r = function (a) {
-               return $http.get('http://169.59.66.242:5000/newspaper?url='+a)
+               return $http.get('https://169.59.66.242:5000/newspaper?url='+a)
                   .success(function(data) {
                return data;
                });
